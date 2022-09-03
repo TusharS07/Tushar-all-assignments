@@ -1,0 +1,31 @@
+Id EmployeeName JobTitle        BasePay OvertimePay OtherPay TotalPay TotalPayBenefits
+1  NATHANIEL    GM              167411  0           400184   567595   567595
+2  GARY         CAPTAIN         155966  245131      137811   538909   538909
+3  ALBERT       CAPTAIN         212739  106088      16452    335279   335279
+5  PATRICK      DEPUTYCHIEF     134401  9737        182234   326373   326373
+6  DAVID        ASSTDEPUTY      118602  8601        189082   316285   316285
+8  DAVID        DEPUTYDIRECTOR  256576  0           51322    307899   307899
+10 JOANNE       CHIEF           285262  0           17115    302377   302377
+13 EDWARD       EXECUTIVE       294580  0           0        294580   294580
+
+1) print Employeename and totalpay who has basepay greater than 100000
+  a) read data file 'data.csv' from command line and extract rows which have basepay>100000
+  b) print only Emloyeename and totalpay
+Ans-  cat data.csv | awk '$4>100000' | awk '{print $2" "$7}' | awk '{print NR,$0}'
+
+2) what is the aggregate totalpay of employees whose jobtitle is 'CAPTAIN'
+  a) read data file 'data.csv' from command line and extract rows which have 'CAPTAIN' in the column 'jobtitle'
+  b) extract Totalpay and sum.print result on terminal
+Ans-  cat data.csv | grep CAPTAIN | awk '{sum+=$7} END {print sum}'
+
+3) print jobtitle and overtimepay who has overtimepay is between 7000 and 10000
+  a)  read data file 'data.csv' from command line and extract jobtitle and overtimepay for column value range between 7000-10000
+  b) print the result on terminal
+Ans- cat data.csv | awk '7000<$5' | awk '$5<10000' | awk '{print $3" "$5}'
+
+4) print average basepay
+  a) read data file 'data.csv' from command line and extract basepay values and calculate its average
+  b) print the result on terminal
+Ans-  cat data.csv | awk '{sum+=$4} END {print sum/11}'
+
+
